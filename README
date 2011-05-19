@@ -1,0 +1,9 @@
+GOAL
+Have a way to add file, or stream over a local network trough a browser or using a telnet link
+
+TODO
+-add a super class to offfm to make the play of a file generic
+-create a methode to stream to audio in offfm
+-FIND AN ALTERNATIVE TO AUDIERE
+-create a super class for interface function  
+
