@@ -1,6 +1,7 @@
 import urllib, json
 from random import randint
 from os import remove, path
+from math import floor
 
 class OffFm:
 	"this class gives all the way to access official fm"
@@ -66,7 +67,7 @@ class OffFm:
 		return ret
 	
 	def gen_mp3_url(self, id):
-		direct = str(id)[0:3]
+		direct = floor(id/1000)
 		print(direct)
 		return self.url_mp3[0] + direct + self.url_mp3[1] + str(id) + self.url_mp3[2] + self.gen_l()
 	
