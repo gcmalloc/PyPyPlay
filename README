@@ -6,4 +6,5 @@ TODO
 -create a methode to stream to audio in offfm
 -FIND AN ALTERNATIVE TO AUDIERE
 -create a super class for interface function  
+-support pulse audio player
 

@@ -1,16 +1,18 @@
 import audiere
 import offfm
 import os
+import time
 
 class AudioInterface:
 	def __init__(self):
 		self.playlist = []
-		#try:
-		print(audiere.get_devices())
-		#self.device = audiere.open_device(audiere.device())
-		#except:
-		#	print("error in opening main device")
-		
+		try:
+			self.device = audiere.open_device()
+		except:
+			print("error in opening main device")
+			print(exiting)
+			exit(1)
+
 	def play(self): #read the stream
 		self.current = self.device.open_file(self.playlist[0])
 		self.current.play()
@@ -32,10 +34,12 @@ class AudioInterface:
 			print(i)
 
 def main():
-	player = AudioReader()
+	player = AudioInterface()
 	fm = offfm.OffFm("8bit")
-	music_file = fm.fetch_file(0)
+	music_file = fm.fetch_file(1)
 	player.add(music_file)
+	player.play()
+	time.sleep(200)
 
 if __name__ == "__main__":
     main()	
