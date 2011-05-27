@@ -4,20 +4,27 @@ from os import remove, path
 from math import floor
 
 http://api.official.fm/search/tracks/{searchparam}?api_max_responses=20
-
+"this class is just a way to handle the url we use in all the instance"
 class OffFm:
-	base_url="https://api.official.fm"
+	url_base="https://api.official.fm"
+	url_format="&format=json"
 	search_url=""
 	
+	
+class OffApi(OffFm):
+	url_maxresponse="api_max_responses="
+	url_search_playlist="search/playlists/"
 	"this class gives all the way to access official fm"
+	"the default key is the devlopper key"
+	"the default user is set to null for no binded user"
 	def __init__(self, key=lBZLgyJlImbRf529dTVS, user=null):
 		self.key = key
 		self.user = user
 		return
 	
-	def search_track(self, key, max_response=20):
+	def search_track(self, search_param, max_response=20):
 		
-	def search_user(self, key, max_response=20):
+	def search_user(self, search_param, max_response=20):
 	def latest_track(self):
 	def charting_track(self):
 	
@@ -37,11 +44,17 @@ class OffFm:
 	def end(self, file_path):
 		remove(file_path)
 
-class Track:
+"instanciate a simple object from a parsed json object"
+class JsonObject:
+	def __init__(self, json_descriptor):
+		for k, v in json_descriptor.items():
+			settart(self, k, v)
+		
+class Track(JsonObject, OffFm):
 	"define a song with the field given by official.fm"
 	"return a stream on the audio file"
 	"initialise a track object"
-	def __init__(self, json_descriptor):
+	def __init__(self):
 		
 	
 	"generate the magic key for the track"
@@ -72,7 +85,7 @@ class Track:
 		
 		return conn
 	
-class User:
+class User(JsonObject, OffFm):
 	def __init__(self)
 		tracks, voted_tracks, playlists, voted_playlists, contacts
 		subscribers	
